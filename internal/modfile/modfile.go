@@ -1,7 +1,6 @@
 package modfile
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -35,7 +34,12 @@ func ParseGoMod(repoPath string) (*ModuleInfo, error) {
     }
 
     if info.Name == "" {
-        return nil, fmt.Errorf("module name not found in go.mod")
+        info.Name = "unknown"
     }
+
+    if info.GoVersion == "" {
+        info.GoVersion = "unknown"
+    }
+
     return info, nil
 }

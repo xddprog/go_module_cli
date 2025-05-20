@@ -38,8 +38,13 @@ func main() {
 
 	fmt.Printf("Module: %s\n", moduleInfo.Name)
 	fmt.Printf("Go Version: %s\n", moduleInfo.GoVersion)
-
-	for _, update := range updates {
-		fmt.Printf("Updating %s from %s to %s\n", update.Path, update.Current, update.Latest)
+	fmt.Println("Dependencies:")
+	if len(updates) > 0 {
+		fmt.Println("Updates available:")
+		for _, update := range updates {
+			fmt.Printf("Updating %s from %s to %s\n", update.Path, update.Current, update.Latest)
+		}
+	} else {
+		fmt.Println("No updates available")
 	}
 }
